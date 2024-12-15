@@ -1,7 +1,17 @@
 #include <iostream>
 #include <cassert>
 using namespace std;
+/*
+This code implements a circular queue in C++ using a dynamic array, supporting the following features:
 
+1- Enqueue: Adds an element to the rear of the queue, with circular indexing to utilize the array efficiently.
+2- Dequeue: Removes an element from the front of the queue.
+3- Search: Locates an element in the queue and displays its position if found.
+4- Access Front/Rear: Retrieves the front or rear element of the queue.
+5- Display: Prints all elements of the queue in order.
+6- Size Management: Tracks and displays the current size of the queue.
+7- Error Handling: Prevents operations on an empty or full queue with informative messages.
+*/
 class ArrayQueue {
 private:
     int front;      // Index of the front element
