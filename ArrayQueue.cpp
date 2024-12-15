@@ -1,111 +1,115 @@
 #include <iostream>
 #include <cassert>
 using namespace std;
-//const int Max_Size = 100;
-class ArrayQueue
-{
+
+class ArrayQueue {
 private:
-    int front;
-    int rear;
-    int length;
-    int* arr;
-    int maxsize;
+    int front;      // Index of the front element
+    int rear;       // Index of the rear element
+    int length;     // Current number of elements in the queue
+    int* arr;       // Dynamic array to store queue elements
+    int maxsize;    // Maximum capacity of the queue
+
 public:
-    ArrayQueue(int size)
-    {
-        if (size <= 0)
-        {
+    // Constructor to initialize the queue with a specific size
+    ArrayQueue(int size) {
+        if (size <= 0) {
             cout << "The Queue by default let size = 100\n";
-            maxsize = 100;
-        }
-        else
+            maxsize = 100; // Default size if an invalid size is provided
+        } else {
             maxsize = size;
-        front = 0;
-        arr = new int[maxsize];
-        rear = maxsize - 1;
-        length = 0;
+        }
+        front = 0; // Initialize front index to 0
+        arr = new int[maxsize]; // Allocate memory for the queue array
+        rear = maxsize - 1; // Initialize rear index for circular behavior
+        length = 0; // Initially, the queue is empty
     }
-    bool isEmpty()
-    {
+
+    // Check if the queue is empty
+    bool isEmpty() {
         return length == 0;
     }
-    bool isFull()
-    {
+
+    // Check if the queue is full
+    bool isFull() {
         return length == maxsize;
     }
-    void enqueue(int Element)
-    {
-        if (isFull())
+
+    // Adds an element to the rear of the queue
+    void enqueue(int Element) {
+        if (isFull()) {
             cout << "Queue can't Enqueue!...\n";
-        else
-        {
-            rear = (rear + 1) % maxsize;
-            arr[rear] = Element;
-            length++;
+        } else {
+            rear = (rear + 1) % maxsize; // Move rear index circularly
+            arr[rear] = Element; // Insert the element at the rear
+            length++; // Increase the length of the queue
         }
     }
-    void dequeue()
-    {
-        if (isEmpty())
+
+    // Removes an element from the front of the queue
+    void dequeue() {
+        if (isEmpty()) {
             cout << "Queue can't Dequeue!...\n";
-        else
-        {
-            front = (front + 1) % maxsize;
-            length--;
+        } else {
+            front = (front + 1) % maxsize; // Move front index circularly
+            length--; // Decrease the length of the queue
         }
     }
-    void Size()
-    {
+
+    // Displays the size of the queue
+    void Size() {
         cout << "Size of Queue = " << length << endl;
     }
-    void rearQueue()
-    {
-        assert(!isEmpty());
+
+    // Displays the element at the rear of the queue
+    void rearQueue() {
+        assert(!isEmpty()); // Ensure the queue is not empty
         cout << "Rear Element = " << arr[rear] << endl;
     }
-    void frontQueue()
-    {
-        assert(!isEmpty());
+
+    // Displays the element at the front of the queue
+    void frontQueue() {
+        assert(!isEmpty()); // Ensure the queue is not empty
         cout << "Front Element = " << arr[front] << endl;
     }
-    void print()
-    {
+
+    // Prints all elements in the queue
+    void print() {
         cout << "Queue Elements : [ ";
-        if (isEmpty())
-            cout << "Empty";
-        else
-        {
-            for (int i = front; i != rear; i = (i + 1) % maxsize)//Circular 
-            {
+        if (isEmpty()) {
+            cout << "Empty"; // Indicate the queue is empty
+        } else {
+            // Traverse the queue in a circular manner
+            for (int i = front; i != rear; i = (i + 1) % maxsize) {
                 cout << arr[i] << " ";
             }
-            cout << arr[rear];
-        }   
+            cout << arr[rear]; // Print the rear element
+        }
         cout << "]\n";
     }
-    void QueueSearch(int Element)
-    {
+
+    // Searches for an element in the queue and displays its position
+    void QueueSearch(int Element) {
         int pos = -1;
-        if (!isEmpty())
-        {
-            for (int i = front; i != rear; i = (i + 1) % maxsize)//Circular 
-            {
-                if (arr[i] == Element)
-                {
-                    pos = i;
+        if (!isEmpty()) {
+            // Traverse the queue in a circular manner
+            for (int i = front; i != rear; i = (i + 1) % maxsize) {
+                if (arr[i] == Element) {
+                    pos = i; // Element found at index `i`
                     break;
                 }
             }
-            if (arr[rear] == Element)
-                pos = rear;
+            if (arr[rear] == Element) {
+                pos = rear; // Check the rear element
+            }
             cout << "The Element if Found on index : " << pos << endl;
+        } else {
+            cout << "Queue is Empty!...\n"; // Cannot search in an empty queue
         }
-        else
-            cout << "Queue is Empty!...\n";
     }
 };
-int main()
-{
+
+int main() {
     ArrayQueue q(5);
     q.enqueue(10);
     q.enqueue(20);
