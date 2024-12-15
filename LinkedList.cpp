@@ -1,7 +1,19 @@
 #include <iostream>
 #include <cassert>
 using namespace std;
+/*
+This code implements a Singly Linked List in C++ with various operations to manage elements within the list. The list supports the following operations:
 
+1- InsertFirst: Adds an element at the beginning of the list.
+2- InsertLast: Adds an element at the end of the list.
+3- InsertAtPos: Inserts an element at a specific position.
+4- RemoveFirst: Removes the first element in the list.
+5- RemoveLast: Removes the last element in the list.
+6- Remove: Removes a specific element from the list.
+7- reverse: Reverses the order of elements in the list.
+8- Search: Searches for an element in the list and displays its index.
+9- Display: Displays all elements in the list.
+*/
 class linkedlist {
 private:
     struct Node {
