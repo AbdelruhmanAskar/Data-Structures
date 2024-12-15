@@ -1,7 +1,19 @@
 #include <iostream>
 #include <cassert>
 using namespace std;
+/*
+This code implements a Doubly Linked List in C++ with various operations to manage elements within the list. The list supports the following operations:
 
+1- InsertFirst: Adds an element to the beginning of the list.
+2- InsertLast: Adds an element to the end of the list.
+3- InsertAtPos: Inserts an element at a specific position.
+4- RemoveFirst: Removes the first element in the list.
+5- RemoveLast: Removes the last element in the list.
+6- Remove: Removes a specific element from the list.
+7- Display: Displays the elements from the beginning to the end.
+8- ReversedDisplay: Displays the elements from the end to the beginning.
+9- Destructor: Cleans up the allocated memory when the list is destroyed.
+*/
 // Class for Doubly Linked List
 class Doublylist
 {
